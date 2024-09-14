@@ -1,0 +1,45 @@
+{
+  "HomePage": {
+    "title": "你好世界",
+    "about": "去关于页"
+  },
+  "SearchPage": {
+    "title": "搜索",
+    "search": "搜索",
+    "searchPlaceholder": "输入任何产品的url链接",
+    "slogan": "通过数据解读任何一款产品的营销策略",
+    "decipher": "解读",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "LeftSidebar": {
+    "search": "搜索",
+    "library": "历史记录",
+    "signin": "登录",
+    "title": "升级到专业版",
+    "content": "解锁所有功能，获得高级体验",
+    "button": "升级"
+  },
+  "PricesPage": {
+    "includes": "包含功能",
+    "liteTitle": "个人版",
+    "liteDescription": "个人/小型企业",
+    "popularTitle": "推荐版",
+    "popularDescription": "初创公司/专业人士",
+    "agencyTitle": "机构版",
+    "agencyDescription": "营销顾问",
+    "enterpriseTitle": "定制版",
+    "enterpriseDescription": "营销顾问",
+    "letsTalk": "联系我们",
+    "threeWebsite": "3个结果",
+    "oneUser": "1位使用者",
+    "oneHistory": "1个月历史数据",
+    "unlimited": "无限制的AI对话",
+    "sixWebsite": "6个结果",
+    "fifteenWebsite": "15个结果",
+    "customerManager": "专属客户经理",
+    "Insights": "自定义报告和洞察",
+    "DataSupport": "数据提取支持",
+    "start": "立即开始"
+  }
+}

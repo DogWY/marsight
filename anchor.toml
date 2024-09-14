@@ -1,0 +1,10 @@
+[lcl-host]
+realm-apid = 'localhost'
+
+[org]
+apid = 'liyunfu1998'
+
+[service]
+apid = 'marsight-ai'
+category = 'javascript'
+cert-style = 'acme'

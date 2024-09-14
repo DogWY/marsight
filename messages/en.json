@@ -1,0 +1,45 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "SearchPage": {
+    "title": "Search",
+    "search": "Search",
+    "searchPlaceholder": "Drop any product's link.",
+    "slogan": "Decipher Any Product's Marketing Strategy with Data.",
+    "decipher": "Decipher",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "LeftSidebar": {
+    "search": "Search",
+    "library": "Library",
+    "signin": "SignIn",
+    "title": "Upgrade to Pro",
+    "content": "Unlock all features and get advanced experience.",
+    "button": "Upgrade"
+  },
+  "PricesPage": {
+    "includes": "Includes",
+    "liteTitle": "Lite",
+    "liteDescription": "Individual and small businesses",
+    "popularTitle": "Pro",
+    "popularDescription": "Startups and Professionals",
+    "agencyTitle": "Agency",
+    "agencyDescription": "marketing consultants",
+    "enterpriseTitle": "Enterprise",
+    "enterpriseDescription": "marketing consultants",
+    "letsTalk": "Let's talk",
+    "threeWebsite": "3 Website results",
+    "oneUser": "1 user",
+    "oneHistory": "1 month of historical data",
+    "unlimited": "Unlimited AI conversations",
+    "sixWebsite": "6 Website results",
+    "fifteenWebsite": "15 Website results",
+    "customerManager": "Dedicated customer manager",
+    "Insights": "Custom reports and insights",
+    "DataSupport": "Data extraction support",
+    "start": "Get Started"
+  }
+}
