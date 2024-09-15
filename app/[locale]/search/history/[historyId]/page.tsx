@@ -256,7 +256,9 @@ export default function Component() {
         setFrontSearchAnalysis(backKeywords as Keywords)
 
         const backSocialOverview = (response.data as any).report.SocialOverview
+        console.log("返回的数据fdsfsdfsd:", backSocialOverview);
         setFrontSocialOverview(backSocialOverview as SocialOverview)
+        console.log("返d:", frontSocialOverview);
 
         const backMentionOverview = (response.data as any).report.MentionOverview
         setFrontMentionOverview(backMentionOverview as MentionOverview)
@@ -272,10 +274,17 @@ export default function Component() {
     }
   };
 
-  // 页面初始化的时候调用 getData 获得数据
   useEffect(() => {
-    getData();
-  }, []);
+    getData(); // 页面初始化的时候调用 getData 获得数据
+  }, []); // 空数组确保只在组件挂载时执行一次
+
+  // 添加监听 frontSocialOverview 状态的 useEffect
+  useEffect(() => {
+    if (frontSocialOverview) {
+      console.log("Updated frontSocialOverview:", frontSocialOverview);
+    }
+  }, [frontSocialOverview]); // 每次 frontSocialOverview 更新时执行
+
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#ffffff] p-4">
@@ -403,13 +412,7 @@ export default function Component() {
 
             {frontSocialOverview &&
               frontMentionOverview &&
-              frontMentionChart &&
-              frontSocialOverview.Records.length > 0 &&
-              frontSocialOverview.TopSources.length > 0 &&
-              frontMentionChart.total_results.graph_data.length > 0 &&
-              frontMentionOverview.results_count &&
-              frontMentionOverview.total_number_of_likes &&
-              frontMentionOverview.total_number_of_shares ? (
+              frontMentionChart ? (
               <SocialMediaAnalysis
                 TotalSocialVisits={frontSocialOverview.Records.reduce((total, record) => total + record.Visits, 0)}
                 Mentions={frontMentionOverview.results_count}
@@ -442,7 +445,7 @@ export default function Component() {
           </div>
         </div>
       </Resizable>
-      <Chat messages={messages||[]} insights={insights || []} chatId={chatId || ''} setInsights={setInsights} setMessages={setMessages} />
+      <Chat messages={messages || []} insights={insights || []} chatId={chatId || ''} setInsights={setInsights} setMessages={setMessages} />
     </div>
 
   )

@@ -45,11 +45,19 @@ interface SocialMediaAnalysisProps {
 //   { name: 'VKontakte', value: 3.27 },
 //   { name: 'Others', value: 12.5 },
 // ];
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 const COLORS = ['#082D64', '#FF8042', '#00C49F', '#FFBB28', '#0088FE', '#E6E9EC'];
 
 const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVisits, Mentions, TotalLikes, TotalShares, LineChartData, PieChartData }) => {
-
+  
   const formatNumber = (num: number): string => {
     if (num >= 1000000) {
       return (num / 1000000).toFixed(1) + 'M'; // 超过百万显示为M
@@ -63,23 +71,29 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
     const { payload } = props;
     if (!payload) return null;
 
-    const total = PieChartData.reduce((sum, entry) => sum + entry.Value, 0);
+    console.log("PieChartData:", PieChartData);
+    console.log("Legend Payload:", payload);
 
     return (
       <ul>
-        {payload.map((entry, index) => {
-          const data = PieChartData.find(data => data.Name === entry.value);
-          const value = data ? data.Value : 0;
-          const percentage = total > 0 ? ((value / total) * 100).toFixed(2) : '0.00';
+        {PieChartData.map((entry, index) => {
+          // 查找图例项对应的数据
+          const data = entry.Value;
+
+          // 计算百分比
+          const percentage = (data * 100).toFixed(2); // 直接用 Value 乘以 100
+
           return (
             <li key={`item-${index}`} style={{ marginBottom: '5px' }}>
-              <span style={{ color: entry.color }}>{entry.value}</span> : {percentage}%
+              <span style={{ color: 'black' }}>{entry.Name}</span> : {percentage}%
             </li>
           );
         })}
       </ul>
     );
   };
+
+
 
   const renderPieChart = () => (
     <ResponsiveContainer width={400} height={200}>
@@ -92,7 +106,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
           outerRadius={50}
           innerRadius={30}
           fill="#8884d8"
-          dataKey="value"
+          dataKey="Value"
         >
           {PieChartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -137,6 +151,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
             <DataBox className="mt-16" spanText="Total social visits" paragraphText={formatNumber(TotalSocialVisits)} icon={<PersonIcon />} />
             {/* 饼图 */}
             <div>
+            Social Media Mentions
               {renderPieChart()}
             </div>
           </div>
