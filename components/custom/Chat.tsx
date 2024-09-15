@@ -34,7 +34,7 @@ const Chat: React.FC<ChatProps> = ({ messages, insights, chatId, setInsights, se
   const [input, setInput] = useState('');
   const [isSending, setIsSending] = useState(false);
   const messagesEndRef = useRef<any>(null);
-  const template = 'markSightTest';
+  const template = 'marsight';
   const { getToken, isSignedIn } = useAuth();
 
   const scrollToBottom = () => {
@@ -61,14 +61,12 @@ const Chat: React.FC<ChatProps> = ({ messages, insights, chatId, setInsights, se
         }
       );
       const data = response.data as AppendAskResponse;
-      setMessages(data.messages);
+      setMessages([...messages, ...data.messages]);
       setInsights(data.insight);
       setInput(''); // 清空输入框
+      setIsSending(false);
     } catch (error) {
       console.error('发送消息失败:', error);
-      // 可以在此处添加一些用户提示
-    } finally {
-      setIsSending(false);
     }
   };
 
@@ -80,21 +78,11 @@ const Chat: React.FC<ChatProps> = ({ messages, insights, chatId, setInsights, se
             <Image src={AIInsightsIcon} alt="AIInsights logo" width={150} height={150} className='ml-28' />
           </div>
 
-          <div className='rounded-[24px] bg-[#f7f7f5] p-4 text-sm'>
+          {/* <div className='rounded-[24px] bg-[#f7f7f5] p-4 text-sm'>
             <div>
               Welcome aboard, Superstar! 🚀✨ Your Writing Journey Starts Here! Are you ready to tackle those papers with ease and leave your mark?
             </div>
-          </div>
-
-          {insights.length > 0 && insights.slice(0, 3).map((insight, index) => (
-            <div
-              key={index}
-              className='rounded-[24px] bg-white px-4 py-2 border text-sm hover:cursor-pointer'
-              onClick={() => appendAsk(insight)}
-            >
-              {insight}
-            </div>
-          ))}
+          </div> */}
 
           {messages.map((message, index) => (
             <div
@@ -106,6 +94,16 @@ const Chat: React.FC<ChatProps> = ({ messages, insights, chatId, setInsights, se
               >
                 <p className="break-words">{message.message}</p>
               </div>
+            </div>
+          ))}
+
+          {insights.length > 0 && insights.slice(0, 3).map((insight, index) => (
+            <div
+              key={index}
+              className='rounded-[24px] bg-white px-4 py-2 border text-sm hover:cursor-pointer'
+              onClick={() => appendAsk(insight)}
+            >
+              {insight}
             </div>
           ))}
           <div ref={messagesEndRef} />
