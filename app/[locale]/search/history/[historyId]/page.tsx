@@ -1,5 +1,5 @@
 "use client"
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Resizable } from 're-resizable'
 import { Influencers } from '@/components/custom/Influencers'
 import { Mentions } from '@/components/custom/Mentions'
@@ -27,6 +27,7 @@ export default function Component() {
 
   interface Introduction {
     icon: string;
+    mainDomainName: string;
   }
   const [frontIntroduction, setFrontIntroduction] = useState<Introduction | null>()
 
@@ -317,6 +318,7 @@ export default function Component() {
                 TargetUsers={frontProductAnalysis.target_users}
                 CoreFeatures={frontProductAnalysis.core_function}
                 UseCases={frontProductAnalysis.application_scenario}
+                DomainName={frontIntroduction.mainDomainName}
               />
             ) : (
               <NoDataCard />

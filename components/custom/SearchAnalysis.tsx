@@ -10,6 +10,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@
 import { TriangleDownIcon, TriangleRightIcon } from "@radix-ui/react-icons";
 import { CursorArrowIcon, MagnifyingGlassIcon, ReaderIcon, HandIcon } from "@radix-ui/react-icons";
 import { Search } from "lucide-react";
+import { useEffect } from "react";
 
 // 最上面的四个盒子的数据
 interface SearchAnalysisProps {
@@ -63,8 +64,14 @@ const SearchAnalysis: React.FC<SearchAnalysisComponentProps> = ({ dataofbox, org
   const [selectedOption, setSelectedOption] = useState("organic");
   const dataToShow = selectedOption === "organic" ? organic : paid;
 
-  // 为每个分类创建独立的展开状态
+  // 初始化展开状态为所有分类都展开
   const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
+
+  // 使用 useEffect 设置初始展开状态
+  useEffect(() => {
+    const initialIndexes = dataToShow.map((_, index) => index);
+    setExpandedIndexes(initialIndexes);
+  }, [dataToShow]);  // 当 dataToShow 变化时重新设置展开状态
 
   // 切换某一行的展开/折叠状态
   const toggleExpand = (index: number) => {

@@ -10,6 +10,7 @@ interface ProductAnalysisProps {
   TargetUsers: string;
   CoreFeatures: string;
   UseCases: string;
+  DomainName: string;
 }
 
 const ProductAnalysis: React.FC<ProductAnalysisProps> = ({
@@ -18,6 +19,7 @@ const ProductAnalysis: React.FC<ProductAnalysisProps> = ({
   TargetUsers,
   CoreFeatures,
   UseCases,
+  DomainName,
 }) => {
   return (
     <>
@@ -33,8 +35,9 @@ const ProductAnalysis: React.FC<ProductAnalysisProps> = ({
               alt="Mail"
               width={24}
               height={24}
-              className="w-32 mb-2 mt-2"
+              className="w-5 mb-2 mt-2"
             />
+            <span className="ml-2">{DomainName}</span>
           </div>
           <div className="text-sm leading-relaxed mt-2 mb-2">{ProductSummary}</div>
           <div className='flex flex-row space-x-4'>
@@ -88,9 +91,7 @@ const ProductAnalysis: React.FC<ProductAnalysisProps> = ({
             </div>
 
           </div>
-
-
-
+          
           {/* </div> */}
         </CardContent>
       </Card>
