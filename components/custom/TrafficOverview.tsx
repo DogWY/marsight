@@ -23,12 +23,20 @@ interface TrafficOverviewProps {
 }
 
 // 工具函数
-const formatNumberInMillions = (num: number) => (num / 1_000_000).toFixed(3) + 'M';
+const formatNumber = (num: number) => {
+  if (num < 1_000_000) {
+    return (num / 1_000).toFixed(2) + 'K'; // 小于一百万，转化为千
+  } else if (num < 1_000_000_000) {
+    return (num / 1_000_000).toFixed(2) + 'B'; // 小于一亿，转化为百万
+  } else {
+    return (num / 1_000_000_000).toFixed(2) + 'M'; // 大于一亿，转化为十亿
+  }
+};
 const formatBounceRate = (rate: number) => (rate * 100).toFixed(2) + '%';
 const formatDuration = (seconds: number) => {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = seconds % 60;
+  const secs = Math.floor(seconds % 60);
   return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 };
 
@@ -71,12 +79,12 @@ const TrafficOverview: React.FC<TrafficOverviewProps> = ({
           <div className='flex justify-start flex-wrap mb-10 mt-2 space-x-6'>
             <DataBox
               spanText="Monthly Visits"
-              paragraphText={formatNumberInMillions(MonthlyVisits)}
+              paragraphText={formatNumber(MonthlyVisits)}
               icon={<EyeOpenIcon />}
             />
             <DataBox
               spanText="Unique Visitors"
-              paragraphText={formatNumberInMillions(UniqueVisitors)}
+              paragraphText={formatNumber(UniqueVisitors)}
               icon={<PersonIcon />}
             />
             <DataBox
@@ -86,7 +94,7 @@ const TrafficOverview: React.FC<TrafficOverviewProps> = ({
             />
             <DataBox
               spanText="Pages Per Visit"
-              paragraphText={PagesPerVisit.toString()}
+              paragraphText={PagesPerVisit.toFixed(2)}
               icon={<ReaderIcon />}
             />
             <DataBox
@@ -96,7 +104,7 @@ const TrafficOverview: React.FC<TrafficOverviewProps> = ({
             />
             <DataBox
               spanText="Page Views"
-              paragraphText={formatNumberInMillions(PageViews)}
+              paragraphText={formatNumber(PageViews)}
               icon={<BarChartIcon />}
             />
           </div>

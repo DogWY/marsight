@@ -27,6 +27,7 @@ export default function Component() {
 
   interface Introduction {
     icon: string;
+    mainDomainName: string;
   }
   const [frontIntroduction, setFrontIntroduction] = useState<Introduction | null>()
 
@@ -308,6 +309,7 @@ export default function Component() {
                 TargetUsers={frontProductAnalysis.target_users}
                 CoreFeatures={frontProductAnalysis.core_function}
                 UseCases={frontProductAnalysis.application_scenario}
+                DomainName={frontIntroduction.mainDomainName}
               />
             ) : (
               <NoDataCard />
