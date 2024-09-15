@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { Resizable } from 're-resizable'
 import { Influencers } from '@/components/custom/Influencers'
 import { Mentions } from '@/components/custom/Mentions'
@@ -9,17 +9,11 @@ import { TrafficOverview } from '@/components/custom/TrafficOverview'
 import { MarketingChannels } from '@/components/custom/MarketingChannels'
 import { Referrals } from '@/components/custom/Referrals'
 import { SearchAnalysis } from '@/components/custom/SearchAnalysis'
-import { Chat } from '@/components/custom/Chat';
+import { Chat, Message } from '@/components/custom/Chat';
 import { useParams } from 'next/navigation'
 import { useAuth } from "@clerk/nextjs"
 import NoDataCard from "@/components/custom/NoDataCard"
 import axios from 'axios';
-
-
-const messages = [
-  { role: 'assistant', content: '您好！我是AI助手。您有什么想问的吗？' },
-]
-
 
 export default function Component() {
 
@@ -209,16 +203,17 @@ export default function Component() {
   const array1ToDisplay = frontMentions?.The_most_popular_mentions.slice(0, 10) || [];
   const array2ToDisplay = frontMentions?.Mentions_from_the_most_popular_public_profiles.slice(0, 10) || [];
 
-
-
-
-
   // 当前页面的chatId
   const { historyId } = useParams()
   const chatIdString = Array.isArray(historyId) ? historyId[0] : historyId;
   // 登录认证内容
   const template = 'marsight'
   const { getToken, isSignedIn } = useAuth();
+
+  const [insights, setInsights] = useState<string[]>();
+  const [messages, setMessages] = useState<Message[]>();
+  const [chatId, setChatId] = useState<string>();
+
   // 获得当前页面需要渲染的信息
   const getData = async () => {
     try {
@@ -234,6 +229,13 @@ export default function Component() {
         );
         console.log("返回的数据:", response.data);
         // 得到后端的 shit
+
+        const chatMessage = (response.data as any).chat
+        setInsights(chatMessage.insight)
+        setMessages(chatMessage.messages)
+
+        const chatId = (response.data as any).chatId
+        setChatId(chatId as string)
 
         const backTraffic = (response.data as any).report.TrafficAndEngagement
         setFrontTraffic(backTraffic as TrafficAndEngagement)
@@ -273,7 +275,7 @@ export default function Component() {
   // 页面初始化的时候调用 getData 获得数据
   useEffect(() => {
     getData();
-  }, [isSignedIn, historyId]);
+  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#ffffff] p-4">
@@ -440,7 +442,7 @@ export default function Component() {
           </div>
         </div>
       </Resizable>
-      <Chat messages={messages} />
+      <Chat messages={messages||[]} insights={insights || []} chatId={chatId || ''} setInsights={setInsights} setMessages={setMessages} />
     </div>
 
   )
