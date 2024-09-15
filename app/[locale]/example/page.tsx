@@ -9,7 +9,7 @@ import { TrafficOverview } from '@/components/custom/TrafficOverview'
 import { MarketingChannels } from '@/components/custom/MarketingChannels'
 import { Referrals } from '@/components/custom/Referrals'
 import { SearchAnalysis } from '@/components/custom/SearchAnalysis'
-import { Chat } from '@/components/custom/Chat';
+import { Chat, Message } from '@/components/custom/Chat';
 import { useParams } from 'next/navigation'
 import { useAuth } from "@clerk/nextjs"
 import axios from 'axios';
@@ -375,7 +375,7 @@ const Influencer = [
 ];
 
 const messages = [
-  { role: 'assistant', content: '您好！我是AI助手。您有什么想问的吗？' },
+  { sender: 'assistant', message: '您好！我是AI助手。您有什么想问的吗？' },
 ]
 
 export default function Component() {
@@ -472,7 +472,7 @@ export default function Component() {
           </div>
         </div>
       </Resizable>
-      <Chat messages={messages} />
+      <Chat messages={messages as Message[]} insights={['question1', 'question2', 'question3']} chatId='' setMessages={() => { }} setInsights={() => { }}/>
     </div>
 
   )
