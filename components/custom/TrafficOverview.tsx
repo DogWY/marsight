@@ -27,9 +27,9 @@ const formatNumber = (num: number) => {
   if (num < 1_000_000) {
     return (num / 1_000).toFixed(2) + 'K'; // 小于一百万，转化为千
   } else if (num < 1_000_000_000) {
-    return (num / 1_000_000).toFixed(2) + 'B'; // 小于一亿，转化为百万
+    return (num / 1_000_000).toFixed(2) + 'M'; // 小于一亿，转化为百万
   } else {
-    return (num / 1_000_000_000).toFixed(2) + 'M'; // 大于一亿，转化为十亿
+    return (num / 1_000_000_000).toFixed(2) + 'B'; // 大于一亿，转化为十亿
   }
 };
 const formatBounceRate = (rate: number) => (rate * 100).toFixed(2) + '%';
