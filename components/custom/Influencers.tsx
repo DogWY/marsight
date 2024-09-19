@@ -80,7 +80,7 @@ const Influencers: React.FC<InfluencersProps> = ({ influencers, chatId }) => {
                                     </TableCell>
                                     <TableCell>
                                         <Link href={influencer.author_url}>
-                                            <Avatar.Root className="bg-blackA1 inline-flex h-[30px] w-[30px] select-none items-center justify-center overflow-hidden">
+                                            {/* <Avatar.Root className="bg-blackA1 inline-flex h-[30px] w-[30px] select-none items-center justify-center overflow-hidden">
                                                 {influencer.service ? (
                                                     <Avatar.Image
                                                         className="h-full w-full rounded-[inherit] object-cover"
@@ -92,7 +92,8 @@ const Influencers: React.FC<InfluencersProps> = ({ influencers, chatId }) => {
                                                         Fail
                                                     </Avatar.Fallback>
                                                 )}
-                                            </Avatar.Root>
+                                            </Avatar.Root> */}
+                                            {/* <Image src={influencer.siteIcon} alt={influencer.siteUrl} width={100} height={100} /> */}
                                             <VideoIcon />
                                         </Link>
                                     </TableCell>
