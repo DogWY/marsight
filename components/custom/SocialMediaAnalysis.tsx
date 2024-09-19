@@ -145,15 +145,14 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
 
       <Card className="rounded-[24px] p-2 pt-6">
         <CardContent>
-          <CardTitle className="text-xl font-extrabold text-[#4281DB]">Social Distribution</CardTitle>
-          <div className="flex justify-around">
-            {/* DataBox 上部内容 */}
-            <DataBox className="mt-16" spanText="Total social visits" paragraphText={formatNumber(TotalSocialVisits)} icon={<PersonIcon />} />
-            {/* 饼图 */}
+          <div className='flex justify-around'>
             <div>
-              <div className="text-xl font-extrabold text-[#4281DB]">
-                Social Media Mentions
-              </div>
+              <CardTitle className="text-xl font-extrabold text-[#4281DB]">Social Distribution</CardTitle>
+              {/* DataBox 上部内容 */}
+              <DataBox className="mt-16" spanText="Total social visits" paragraphText={formatNumber(TotalSocialVisits)} icon={<PersonIcon />} />
+            </div>
+            <div>
+              <CardTitle className="text-xl font-extrabold text-[#4281DB]">Social Media Mentions</CardTitle>
               <div>{renderPieChart()}</div>
             </div>
           </div>
