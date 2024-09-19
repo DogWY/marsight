@@ -131,7 +131,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="number" stroke="#4281DB" strokeWidth={3} />
+        <Line type="monotone" dataKey="mentions" stroke="#4281DB" strokeWidth={3} />
       </LineChart>
     </ResponsiveContainer>
   );
@@ -152,8 +152,8 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
             {/* 饼图 */}
             <div className="text-xl font-extrabold text-[#4281DB]">
               Social Media Mentions
-              {renderPieChart()}
             </div>
+            <div>{renderPieChart()}</div>
           </div>
         </CardContent>
       </Card>
