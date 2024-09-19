@@ -119,7 +119,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
   );
   const formattedLineChartData = LineChartData.map((entry) => ({
     name: `${entry.date_from} - ${entry.date_to}`,
-    number: entry.results_nb,
+    mentions: entry.results_nb,
   }));
 
 
