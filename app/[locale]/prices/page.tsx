@@ -128,7 +128,7 @@ export default function Component() {
                 <DialogTrigger asChild>
                   <Button
                     className={`w-full py-2 rounded-lg text-sm font-semibold bg-[#F7F7F5] text-black hover:bg-slate-300`}
-                    onClick={() => handlePucrhase(priceData[3].priceId)}
+                    onClick={() => handlePucrhase(priceData[2].priceId)}
                   >
                     {t('start')}
                   </Button>
@@ -178,7 +178,7 @@ export default function Component() {
                 <DialogTrigger asChild>
                   <Button
                     className={`w-full py-2 rounded-lg text-sm font-semibold text-white`}
-                    onClick={() => handlePucrhase(priceData[2].priceId)}
+                    onClick={() => handlePucrhase(priceData[1].priceId)}
                   >
                     {t('start')}
                   </Button>
@@ -224,7 +224,7 @@ export default function Component() {
                 <DialogTrigger asChild>
                   <Button
                     className={`w-full py-2 rounded-lg text-sm font-semibold bg-[#F7F7F5] text-black hover:bg-slate-300`}
-                    onClick={() => handlePucrhase(priceData[1].priceId)}
+                    onClick={() => handlePucrhase(priceData[0].priceId)}
                   >
                     {t('start')}
                   </Button>
