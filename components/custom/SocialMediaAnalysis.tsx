@@ -150,10 +150,12 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
             {/* DataBox 上部内容 */}
             <DataBox className="mt-16" spanText="Total social visits" paragraphText={formatNumber(TotalSocialVisits)} icon={<PersonIcon />} />
             {/* 饼图 */}
-            <div className="text-xl font-extrabold text-[#4281DB]">
-              Social Media Mentions
+            <div>
+              <div className="text-xl font-extrabold text-[#4281DB]">
+                Social Media Mentions
+              </div>
+              <div>{renderPieChart()}</div>
             </div>
-            <div>{renderPieChart()}</div>
           </div>
         </CardContent>
       </Card>
