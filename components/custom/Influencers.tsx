@@ -23,7 +23,7 @@ interface InfluencersProps {
 }
 
 const Influencers: React.FC<InfluencersProps> = ({ influencers, chatId }) => {
-    const tableHeader = ['', 'Profile Name', 'Site', 'Mentions', 'Followers'];
+    const tableHeader = ['Profile Name', 'Site', 'Mentions', 'Followers'];
 
     return (
         <>
