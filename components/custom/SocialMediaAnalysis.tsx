@@ -57,7 +57,7 @@ const getRandomColor = () => {
 const COLORS = ['#082D64', '#FF8042', '#00C49F', '#FFBB28', '#0088FE', '#E6E9EC'];
 
 const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVisits, Mentions, TotalLikes, TotalShares, LineChartData, PieChartData }) => {
-  
+
   const formatNumber = (num: number): string => {
     if (num >= 1000000) {
       return (num / 1000000).toFixed(1) + 'M'; // 超过百万显示为M
@@ -150,8 +150,8 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
             {/* DataBox 上部内容 */}
             <DataBox className="mt-16" spanText="Total social visits" paragraphText={formatNumber(TotalSocialVisits)} icon={<PersonIcon />} />
             {/* 饼图 */}
-            <div>
-            Social Media Mentions
+            <div className="text-xl font-extrabold text-[#4281DB]">
+              Social Media Mentions
               {renderPieChart()}
             </div>
           </div>
