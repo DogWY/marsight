@@ -22,16 +22,19 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
   PaidSearch
 }) => {
 
+  // 计算所有渠道的总和
+  const total = Social + Direct + DisplayAds + Referrals + Email + OrganicSearch + PaidSearch;
+
   const MarketingChannelsBarChartData = [
-    { name: 'Direct', value: Direct },
-    { name: 'Email', value: Email },
-    { name: 'Referrals', value: Referrals },
-    { name: 'Social', value: Social },
-    { name: 'OrganicSearch', value: OrganicSearch },
-    { name: 'PaidSearch', value: PaidSearch },
-    { name: 'DisplayAds', value: DisplayAds },
+    { name: 'Direct', value: (Direct / total) * 100 },
+    { name: 'Email', value: (Email / total) * 100 },
+    { name: 'Referrals', value: (Referrals / total) * 100 },
+    { name: 'Social', value: (Social / total) * 100 },
+    { name: 'OrganicSearch', value: (OrganicSearch / total) * 100 },
+    { name: 'PaidSearch', value: (PaidSearch / total) * 100 },
+    { name: 'DisplayAds', value: (DisplayAds / total) * 100 },
   ]
-  
+
   return (
     <>
       <Card className="rounded-[24px] p-2">
@@ -45,7 +48,7 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
               <XAxis dataKey="name" />
               <YAxis
                 tickFormatter={(value) => `${value}%`}
-                domain={[0, 50]} // Adjusted for better visualization
+                domain={[0, 100]}
               />
               <Tooltip
                 formatter={(value) => `${value}%`}
