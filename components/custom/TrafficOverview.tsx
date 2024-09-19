@@ -57,8 +57,8 @@ const TrafficOverview: React.FC<TrafficOverviewProps> = ({
       const mobileItem = MobileData.find(item => item.Key === desktopItem.Key);
       return {
         name: desktopItem.Key,     // 将 Key 作为 name
-        desktop: desktopItem.Value, // DesktopData 的 Value
-        mobile: mobileItem ? mobileItem.Value : 0 // MobileData 的 Value，如果找不到则默认值为 0
+        desktop: Math.round(desktopItem.Value), // DesktopData 的 Value
+        mobile: mobileItem ? Math.round(mobileItem.Value) : 0 // MobileData 的 Value，如果找不到则默认值为 0
       };
     });
   }
