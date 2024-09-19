@@ -41,16 +41,20 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
   return (
     <>
       <Card className="rounded-[24px] p-2">
-        <CardHeader className="flex justify-start">
-          <CardTitle className="text-xl font-extrabold text-[#4281DB]">Marketing Channels</CardTitle>
-          <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-            <InfoCircledIcon className="text-gray-500 hover:text-blue-500" />
-            {isHovered && (
-              <div className="absolute top-8 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
-                <p className="text-sm text-gray-700">Direct: Traffic from users entering the URL directly or via bookmarks. Email: Traffic from email marketing efforts. Referrals: Traffic from links on other websites. Social: Traffic from social media platforms. Organic: Traffic from natural search engine results. Paid Search: Traffic from paid search ads. Display Ads: Traffic from display advertising like banners.</p>
-              </div>
-            )}
-          </div>
+        <CardHeader>
+          <CardTitle className="text-xl font-extrabold text-[#4281DB]">
+            Marketing Channels
+            <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+              <InfoCircledIcon className="text-gray-500 hover:text-blue-500" />
+              {isHovered && (
+                <div className="absolute top-8 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
+                  <p className="text-sm text-gray-700">Direct: Traffic from users entering the URL directly or via bookmarks. Email: Traffic from email marketing efforts. Referrals: Traffic from links on other websites. Social: Traffic from social media platforms. Organic: Traffic from natural search engine results. Paid Search: Traffic from paid search ads. Display Ads: Traffic from display advertising like banners.</p>
+                </div>
+              )}
+            </div>
+
+          </CardTitle>
+
         </CardHeader>
         <CardContent className="mt-6">
           <ResponsiveContainer width="100%" height={300}>
