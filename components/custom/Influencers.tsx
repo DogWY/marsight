@@ -6,6 +6,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import Image from "next/image";
 import AIInsightsIcon from "@/public/aiinsights.svg";
+import { VideoIcon } from '@radix-ui/react-icons';
 
 interface Influencer {
     authors_id: string; // 作者ID
@@ -92,7 +93,7 @@ const Influencers: React.FC<InfluencersProps> = ({ influencers, chatId }) => {
                                                     </Avatar.Fallback>
                                                 )}
                                             </Avatar.Root>
-                                            {/* <Image src={influencer.siteIcon} alt={influencer.siteUrl} width={100} height={100} /> */}
+                                            <VideoIcon />
                                         </Link>
                                     </TableCell>
                                     <TableCell>{influencer.count}</TableCell>
