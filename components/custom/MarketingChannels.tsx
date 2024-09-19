@@ -26,13 +26,13 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
   const total = Social + Direct + DisplayAds + Referrals + Email + OrganicSearch + PaidSearch;
 
   const MarketingChannelsBarChartData = [
-    { name: 'Direct', value: (Direct / total) * 100 },
-    { name: 'Email', value: (Email / total) * 100 },
-    { name: 'Referrals', value: (Referrals / total) * 100 },
-    { name: 'Social', value: (Social / total) * 100 },
-    { name: 'OrganicSearch', value: (OrganicSearch / total) * 100 },
-    { name: 'PaidSearch', value: (PaidSearch / total) * 100 },
-    { name: 'DisplayAds', value: (DisplayAds / total) * 100 },
+    { name: 'Direct', value: (Direct / total * 100).toFixed(2) },
+    { name: 'Email', value: (Email / total * 100).toFixed(2) },
+    { name: 'Referrals', value: (Referrals / total * 100).toFixed(2) },
+    { name: 'Social', value: (Social / total * 100).toFixed(2) },
+    { name: 'OrganicSearch', value: (OrganicSearch / total * 100).toFixed(2) },
+    { name: 'PaidSearch', value: (PaidSearch / total * 100).toFixed(2) },
+    { name: 'DisplayAds', value: (DisplayAds / total * 100).toFixed(2) },
   ]
 
   return (
