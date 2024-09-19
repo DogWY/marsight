@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 interface MarketingChannelsProps {
   Social: number;
@@ -22,6 +23,8 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
   PaidSearch
 }) => {
 
+  // 控制提示框是否显示
+  const [isHovered, setIsHovered] = useState(false);
   // 计算所有渠道的总和
   const total = Social + Direct + DisplayAds + Referrals + Email + OrganicSearch + PaidSearch;
 
@@ -40,6 +43,14 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
       <Card className="rounded-[24px] p-2">
         <CardHeader>
           <CardTitle className="text-xl font-extrabold text-[#4281DB]">Marketing Channels</CardTitle>
+          <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+            <InfoCircledIcon className="text-gray-500 hover:text-blue-500" />
+            {isHovered && (
+              <div className="absolute top-8 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
+                <p className="text-sm text-gray-700">这是详细介绍</p>
+              </div>
+            )}
+          </div>
         </CardHeader>
         <CardContent className="mt-6">
           <ResponsiveContainer width="100%" height={300}>

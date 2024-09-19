@@ -64,7 +64,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
     } else if (num >= 1000) {
       return (num / 1000).toFixed(1) + 'K'; // 超过千显示为K
     }
-    return num.toString(); // 小于1000则正常显示
+    return Math.round(num).toString(); // 小于1000则显示整数
   };
 
   const CustomLegend = (props: LegendProps) => {
