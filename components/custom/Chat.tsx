@@ -113,7 +113,7 @@ const Chat: React.FC<ChatProps> = ({ messages, insights, chatId, setInsights, se
       <div className="p-4 border-t border-gray-200">
         <div className="relative">
           <Textarea
-            placeholder="输入您的问题..."
+            placeholder="Ask a question..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => {
@@ -127,9 +127,9 @@ const Chat: React.FC<ChatProps> = ({ messages, insights, chatId, setInsights, se
             disabled={isSending}
           />
           <div className="absolute bottom-2 right-2 flex items-center space-x-2">
-            <Button variant="ghost" size="icon" className='rounded-[24px]'>
+            {/* <Button variant="ghost" size="icon" className='rounded-[24px]'>
               <PaperclipIcon className="h-4 w-4" />
-            </Button>
+            </Button> */}
             <Button
               onClick={() => appendAsk(input)}
               className="bg-black text-white hover:bg-gray-800 rounded-[24px]"
