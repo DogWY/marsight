@@ -45,7 +45,7 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
           <CardTitle className="text-xl font-extrabold text-[#4281DB] flex">
             Marketing Channels
 
-            <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+            <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
               <InfoCircledIcon className="text-gray-500 hover:text-blue-500" />
               {/* {isHovered && (
                 <div className="absolute top-0 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
