@@ -76,7 +76,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
 
     return (
       <ul>
-        {PieChartData.map((entry, index) => {
+        {PieChartData.slice(0, 7).map((entry, index) => {
           // 查找图例项对应的数据
           const data = entry.Value;
 
