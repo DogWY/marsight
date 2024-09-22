@@ -56,7 +56,7 @@ const MarketingChannels: React.FC<MarketingChannelsProps> = ({
 
             <div className="relative">
               {isHovered && (
-                <div className="absolute top-0 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
+                <div className="absolute top-0 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md w-full flex-1">
                   <p className="text-sm text-gray-700">Direct: Traffic from users entering the URL directly or via bookmarks. Email: Traffic from email marketing efforts. Referrals: Traffic from links on other websites. Social: Traffic from social media platforms. Organic: Traffic from natural search engine results. Paid Search: Traffic from paid search ads. Display Ads: Traffic from display advertising like banners.</p>
                 </div>
               )}
