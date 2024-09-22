@@ -108,7 +108,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
           fill="#8884d8"
           dataKey="Value"
         >
-          {PieChartData.map((entry, index) => (
+          {PieChartData.slice(0, 7).map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
