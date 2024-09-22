@@ -73,7 +73,8 @@ const Referrals: React.FC<ReferralsProps> = ({ referralsData, chatId }) => {
       <Card className="rounded-[24px] p-2">
         <CardHeader>
           <div className='flex justify-between'>
-            <CardTitle className='text-xl font-extrabold text-[#4281DB] flex'>
+            
+            <CardTitle className='text-xl font-extrabold text-[#4281DB] flex flex-1'>
               Referrals
               <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
                 <InfoCircledIcon className="text-gray-500 hover:text-blue-500" />
@@ -86,10 +87,11 @@ const Referrals: React.FC<ReferralsProps> = ({ referralsData, chatId }) => {
                 )}
               </div>
             </CardTitle>
+
             <Button
               variant="link"
               asChild
-              className="p-2 hover:bg-muted/50"
+              className="p-2 hover:bg-muted/50 flex-1"
               onClick={handleAIInsights}
             >
               <Link href="mailto:your-email@example.com">
@@ -102,6 +104,7 @@ const Referrals: React.FC<ReferralsProps> = ({ referralsData, chatId }) => {
                 />
               </Link>
             </Button>
+
           </div>
         </CardHeader>
         <div className='-mt-6'>
