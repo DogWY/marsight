@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@
 import { useAuth } from "@clerk/nextjs"
 import axios from "axios";
 import { headers } from "next/headers";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 interface ReferralsRow {
   Domain: string;
@@ -39,6 +40,9 @@ const formatNumber = (num: number): string => {
 };
 
 const Referrals: React.FC<ReferralsProps> = ({ referralsData, chatId }) => {
+  // 控制提示框是否显示
+  const [isHovered, setIsHovered] = useState(false);
+
   const { getToken, isSignedIn } = useAuth();
   const template = 'marsight'
 
@@ -69,7 +73,19 @@ const Referrals: React.FC<ReferralsProps> = ({ referralsData, chatId }) => {
       <Card className="rounded-[24px] p-2">
         <CardHeader>
           <div className='flex justify-between'>
-            <CardTitle className='text-xl font-extrabold text-[#4281DB]'>Referrals</CardTitle>
+            <CardTitle className='text-xl font-extrabold text-[#4281DB] flex'>
+              Referrals
+              <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                <InfoCircledIcon className="text-gray-500 hover:text-blue-500" />
+              </div>
+              <div className="relative flex-1">
+                {isHovered && (
+                  <div className="absolute top-0 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
+                    <p className="text-sm text-gray-700">In SEO (Search Engine Optimization), &quot;Referrals&quot; refer to the traffic directed to your website through links from other websites. </p>
+                  </div>
+                )}
+              </div>
+            </CardTitle>
             <Button
               variant="link"
               asChild
