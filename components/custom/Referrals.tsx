@@ -81,7 +81,7 @@ const Referrals: React.FC<ReferralsProps> = ({ referralsData, chatId }) => {
               </div>
               <div className="relative flex-1">
                 {isHovered && (
-                  <div className="absolute top-0 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md">
+                  <div className="absolute top-0 right-0 bg-white border border-gray-300 rounded-lg p-2 shadow-md z-10">
                     <p className="text-sm text-gray-700">In SEO (Search Engine Optimization), &quot;Referrals&quot; refer to the traffic directed to your website through links from other websites. </p>
                   </div>
                 )}
