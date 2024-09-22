@@ -99,7 +99,7 @@ const SocialMediaAnalysis: React.FC<SocialMediaAnalysisProps> = ({ TotalSocialVi
     <ResponsiveContainer width={400} height={200}>
       <PieChart>
         <Pie
-          data={PieChartData}
+          data={PieChartData.slice(0, 7)}
           cx="40%"
           cy="50%"
           labelLine={false}
