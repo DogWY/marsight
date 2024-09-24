@@ -9,8 +9,6 @@ import { TriangleDownIcon, TriangleRightIcon } from '@radix-ui/react-icons';
 import { useParams } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
 import axios from 'axios';
-import Link from "next/link";
-import Image from "next/image";
 
 interface Keywords {
     all_brand: {
@@ -71,7 +69,7 @@ const SearchAnalysis = () => {
     const formatBounceRate = (rate: number) => (rate * 100).toFixed(2) + "%";
     const formatAsPercentage = (num: number) => (num * 100).toFixed(2) + "%";
 
-    const [selectedOption, setSelectedOption] = useState('Organic Traffic');
+    const [selectedOption, setSelectedOption] = useState('organic');
     // 为每个分类创建独立的展开状态
     const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
     // 切换某一行的展开/折叠状态
