@@ -39,11 +39,9 @@ export default function Page({ params: { lng } }: { params: { lng: string } }) {
 
   const makeDialogue = async (event: React.FormEvent) => {
     if (inputRef.current) {
-      console.log(inputRef.current.value);
-
       event.preventDefault();
-
       let url = inputRef.current.value;
+      console.log(`搜索网址:${url}`);
       if (!url.startsWith("http://") && !url.startsWith("https://")) {
         url = "https://" + url;
       }
@@ -55,11 +53,12 @@ export default function Page({ params: { lng } }: { params: { lng: string } }) {
         } else {
           domain = parsedUrl.hostname;
         }
+        if (domain.split(".").length < 2) throw new Error("Invalid domain");
       } catch (e) {
         alert("Invalid URL");
         return;
       }
-
+      console.log(`实际搜索域名:${domain}`);
       setIsSearching(true);
       try {
         if (isSignedIn && user) {
